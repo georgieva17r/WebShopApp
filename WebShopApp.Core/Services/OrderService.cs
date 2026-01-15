@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebShopApp.Core.Contracts;
+using WebShopApp.Infrastructure.Data;
 using WebShopApp.Infrastructure.Data.Domain;
 
 namespace WebShopApp.Core.Services
@@ -13,7 +14,7 @@ namespace WebShopApp.Core.Services
         private readonly ApplicationDbContext _context;
         private readonly IProductService _productService;  
         
-        public OrderService(AplicationDbContext context, IProductService productService)
+        public OrderService(ApplicationDbContext context, IProductService productService)
         {
             _context = context;
             _productService = productService;
@@ -40,10 +41,34 @@ namespace WebShopApp.Core.Services
             this._context.Orders.Add(item);
             return _context.SaveChanges() !=0;
         }
+        public List<Order> GetOrdersByUser(string userId)
+        {
+            return _context.Orders.Where(x => x.UserId == userId).OrderByDescending(x => x.OrderDate).ToList();
+        }
+
+        public Order GetOrderById(int orderId)
+        {
+            throw new NotImplementedException();
+        }
 
         public List<Order> GetOrders()
         {
             return _context.Orders.OrderByDescending(x => x.OrderDate).ToList();
+        }
+
+        public List<Order> GetOrdersByProductId(string useId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool RemoveById(int orderId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Update(int orderId, int productId, string userId, int quantity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

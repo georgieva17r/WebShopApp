@@ -17,10 +17,12 @@ namespace WebShopApp.Core.Services
         {
             _context = context;
         }
+
         public Category GetCategoryById(int categoryId)
         {
             return _context.Categories.Find(categoryId);
         }
+
 
         public List<Category> GetCategories()
         {
