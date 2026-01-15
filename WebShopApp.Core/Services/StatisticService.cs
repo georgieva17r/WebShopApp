@@ -9,10 +9,10 @@ using WebShopApp.Infrastructure.Data;
 
 namespace WebShopApp.Core.Services
 {
-    public class StatisticsService : IStatisticsService
+    public class StatisticService : IStatisticService
     {
         private readonly ApplicationDbContext _context;
-        public StatisticsService(ApplicationDbContext context)
+        public StatisticService(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -34,7 +34,7 @@ namespace WebShopApp.Core.Services
 
         public decimal SumOrders()
         {
-            var suma = _context.Orders.Sum(x  => x.TotalPrice);
+            var suma=_context.Orders.Sum(x=>x.TotalPrice);
             return suma;
         }
     }

@@ -165,7 +165,7 @@ namespace WebShopApp.Controllers
             {
                 return NotFound();
             }
-            ProductEditVM product = new ProductEditVM()
+            ProductDeleteVM product = new ProductDeleteVM()
             {
                 Id = item.Id,
                 ProductName = item.ProductName,
